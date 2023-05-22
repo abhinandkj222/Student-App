@@ -1,0 +1,89 @@
+    
+   
+
+                    <section class="vh-100 gradient-custom sm">
+                      <div class="container py-5 h-100 sm">
+                        <div class="row justify-content-center align-items-center h-100">
+                          <div class="col-12 col-lg-9 col-xl-7">
+                            <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                              <div class="card-body p-4 p-md-5">
+                                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">EDIT STUDENT DETAILS</h3>
+                                
+                    <form #editStudentForm="ngForm">
+                      <div class="mb-5 sm">
+                        <input name="id" #id="ngModel" [(ngModel)]="student.id" type="text" class="form-control" placeholder="Enter Id" required>
+                       </div>  
+                
+                      <!-- validation -->
+                      <div *ngIf="id.invalid && id.touched" class="mb-2 text-danger">
+                        please enter a valid id
+                      </div> 
+                
+                      <div class="mb-5 sm">
+                        <input name="name" #name="ngModel" [(ngModel)]="student.name"  type="text" class="form-control" placeholder="Enter your name" pattern="[a-zA-Z ]*" required>
+                      </div>
+                
+                      <!--name validation -->
+                     <div *ngIf="name.invalid && name.touched " class="mb-3 text-danger">
+                        please enter a valid contact
+                      </div> 
+                       
+                      <div class="mb-5 sm">
+                        <input name="class" #class="ngModel" [(ngModel)]="student.class" type="text" class="form-control" placeholder="Enter your class" required>
+                      </div>
+                
+                
+                      <!-- class validation -->
+                       <div *ngIf="class.invalid && class.touched " class="mb-3 text-danger">
+                        please enter a class
+                        </div>
+                
+                      <div class="mb-5 sm">
+                        <input name="email" #email="ngModel" [(ngModel)]="student.email" type="email" class="form-control" placeholder="Enter your email id" email required>
+                      </div>
+                
+                       <!--email validation -->
+                       <div *ngIf="email.invalid && email.touched " class="mb-3 text-danger">
+                        please enter a valid contact
+                      </div> 
+                
+                       <div class="mb-5 sm">
+                        <input name="mobile" #mobile="ngModel" [(ngModel)]="student.mobile" type="email" class="form-control" placeholder="Enter your Mobile number" minlength="10" maxlength="10" pattern="[0-9]*" required>
+                      </div> 
+                
+                       <!--mobile validation -->
+                       <div *ngIf="mobile.invalid && mobile.touched " class="mb-3 text-danger">
+                        please enter a valid contact number
+                      </div>
+                
+                
+                      <div class="mb-5 sm">
+                        <select name="groupId" #groupId="ngModel" [(ngModel)]="student.groupId" class="form-control" pattern="[a-zA-Z]*" required>
+                          <option disabled selected hidden>choose a group</option>
+                          <option [value]="group.id" *ngFor="let group of groups">{{group.name}}</option>
+                        </select>
+                      </div>
+                <!-- group validation -->
+                
+                 
+                   <div *ngIf="groupId.invalid && groupId.touched " class="mb-3 text-danger">
+                      please select valid group
+                     </div>
+                
+                      <div class="modal-footer sm">
+                        <button (click)="editstudent(student.id)"  [disabled]="editStudentForm.invalid"  type="button" class="btn btn-success">update</button>
+                      </div>
+                      
+                    </form>
+    
+                                  
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                   
+    
+                      
+    
